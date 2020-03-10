@@ -1,0 +1,31 @@
+.pokemon__details {
+  width: 25%;
+  height: 50vh;
+  margin-top: 50px;
+  border-radius: 10px;
+  color: white;
+  background-color: #b30f0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.screen {
+  width: 70%;
+  height: 70%;
+  background-color: #16181b;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pokedex__image {
+  align-self: flex-start;
+}
+
+.pokedex__name {
+  text-transform: capitalize;
+  font-family: "Roboto", sans-serif;
+}

@@ -1,25 +1,69 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+
+import PokemonDetails from "./components/pokemon-details/pokemonDetails";
+import Pokemon from "./components/pokemon/pokemon";
+
+import "./app.css";
 
 function App() {
+  const [pokemon, setPokemon] = useState("");
+  const [pokemonImage, setPokemonImage] = useState([]);
+  const [selected, setSelected] = useState(0);
+  const [details, setDetails] = useState([]);
+  const [abilities, setAbilities] = useState([]);
+  const [count, setCounter] = useState(1);
+
+  useEffect(() => {
+    const fetchPokemon = async () => {
+      const apiPokemons = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${count}`
+      );
+      const pokemonJsoned = await apiPokemons.json();
+      setPokemonImage(pokemonJsoned.sprites);
+      setPokemon(pokemonJsoned);
+    };
+    fetchPokemon();
+  }, [count]);
+
+  useEffect(() => {
+    const fetchDetails = async () => {
+      const apiDetails = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${selected}`
+      );
+      const jsonedDetails = await apiDetails.json();
+      setDetails(jsonedDetails);
+      setAbilities(jsonedDetails.abilities);
+    };
+    fetchDetails();
+  }, [selected]);
+
+  const next = () => {
+    setCounter(count + 1);
+  };
+  const prev = () => {
+    setCounter(count - 1);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="pokedex">
+      <section className="pokeList">
+        <Pokemon
+          image={pokemonImage.front_default}
+          name={pokemon.name}
+          selectOne={setSelected}
+          id={pokemon.id}
+        />
+        <div>
+          <button className="red__btn" onClick={prev}>
+            Prev
+          </button>
+          <button className="blue__btn" onClick={next}>
+            Next
+          </button>
+        </div>
+      </section>
+      <PokemonDetails name={details.name} abilities={abilities} />
+    </section>
   );
 }
 
