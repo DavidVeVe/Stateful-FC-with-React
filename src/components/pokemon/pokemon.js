@@ -2,7 +2,7 @@ import React from "react";
 
 import "./pokemon.css";
 
-const Pokemon = ({ image, name, id, selectOne }) => {
+const Pokemon = ({ image, name, selectOne, id }) => {
   return (
     <div
       className="pokemon__card"

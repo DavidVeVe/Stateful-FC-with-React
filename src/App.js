@@ -10,6 +10,8 @@ function App() {
   const [pokemonImage, setPokemonImage] = useState([]);
   const [selected, setSelected] = useState(0);
   const [details, setDetails] = useState([]);
+  const [types, setTypes] = useState([]);
+  const [stats, setStats] = useState([]);
   const [abilities, setAbilities] = useState([]);
   const [count, setCounter] = useState(1);
 
@@ -32,6 +34,8 @@ function App() {
       );
       const jsonedDetails = await apiDetails.json();
       setDetails(jsonedDetails);
+      setTypes(jsonedDetails.types);
+      setStats(jsonedDetails.stats);
       setAbilities(jsonedDetails.abilities);
     };
     fetchDetails();
@@ -62,7 +66,12 @@ function App() {
           </button>
         </div>
       </section>
-      <PokemonDetails name={details.name} abilities={abilities} />
+      <PokemonDetails
+        name={details.name}
+        types={types}
+        abilities={abilities}
+        stats={stats}
+      />
     </section>
   );
 }
