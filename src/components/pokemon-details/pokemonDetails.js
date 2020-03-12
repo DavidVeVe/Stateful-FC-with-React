@@ -40,7 +40,7 @@ const PokemonDetails = ({ name, types, abilities, stats }) => {
               return (
                 <div className="pokedex__info-value" key={Math.random()}>
                   <p>
-                    {stat.stat.name}:{" "}
+                    {stat.stat.name}:
                     <strong className="stat__value">{stat.base_stat}</strong>
                   </p>
                 </div>
