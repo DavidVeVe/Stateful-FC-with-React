@@ -54,7 +54,7 @@ body {
   background-color: #af1313;
 }
 
-@media (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   .pokedex {
     flex-direction: column;
   }
@@ -66,22 +66,7 @@ body {
     height: 11.2rem;
   }
 
-  .pokemon__details {
-    width: 95%;
-    margin-top: 10px;
-    height: 42vh;
-  }
-
-  .screen {
-    width: 85%;
-  }
-
   .pokedex__name {
     margin: 10px 0;
-  }
-
-  .pokedex__info {
-    margin-bottom: 10px;
-    font-size: 1rem;
   }
 }

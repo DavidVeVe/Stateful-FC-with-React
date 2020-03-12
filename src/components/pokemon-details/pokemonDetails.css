@@ -54,3 +54,21 @@
 .stat__value {
   color: white;
 }
+
+@media only screen and (max-width: 600px) {
+  .pokemon__details {
+    width: 95%;
+    margin-top: 10px;
+    height: 45vh;
+  }
+
+  .screen {
+    width: 85%;
+    height: 90%;
+  }
+
+  .pokedex__info {
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+  }
+}
